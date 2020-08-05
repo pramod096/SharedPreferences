@@ -2,7 +2,9 @@ package pramod.com.sharedpreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +22,10 @@ public class MainActivity extends AppCompatActivity {
         tv = findViewById(R.id.result);
 
         sp = getSharedPreferences("myshredpreferences", MODE_PRIVATE);
-    }(
+        if(sp!=null && sp.contains("NAME")){
+            displayData();
+        }
+    }
 
     public void saveData(View view){
         String name = n.getText().toString();
@@ -34,5 +39,13 @@ public class MainActivity extends AppCompatActivity {
         displayData();
     }
 
+    private void displayData(){
+        if(sp != null{
+            String name = sp.getString("NAME","DEFAULT");
+            int age = sp.getInt("AGE",0);
+            tv.setText(name+"\n"+age);
+            
+        }
+    }
     
 }

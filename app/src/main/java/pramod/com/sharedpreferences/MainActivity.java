@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         a = findViewById(R.id.age);
         tv = findViewById(R.id.result);
 
-        sp = getSharedPreferences("myshredpreferences", MODE_PRIVATE);
+        sp = getSharedPreferences("mysharedpreferences", MODE_PRIVATE);
         if(sp!=null && sp.contains("NAME")){
             displayData();
         }
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         String name = n.getText().toString();
         int age = Integer.parseInt(a.getText().toString());
 
-        SharedPrefereces.Editor editor = sp.edit();
+        SharedPreferences.Editor editor = sp.edit();
         editor.putString("NAME", name);
         editor.putInt("AGE",age);
         editor.apply();
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayData(){
-        if(sp != null{
+        if(sp != null){
             String name = sp.getString("NAME","DEFAULT");
             int age = sp.getInt("AGE",0);
             tv.setText(name+"\n"+age);
